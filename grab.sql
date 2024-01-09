@@ -73,7 +73,7 @@ UNLOCK TABLES;
 --
 CREATE TABLE Driver(
 	`DID` varchar(15) NOT NULL,
-	`SSN` varchar(50) NOT NULL,
+	`TIN` varchar(50) NOT NULL,
 	`DLNo` varchar(50) NOT NULL,
 	`DLExpiry` date NOT NULL,
     
