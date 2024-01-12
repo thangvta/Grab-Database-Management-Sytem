@@ -12,19 +12,19 @@ INSERT INTO CompletedTrips (TripID, DriverArrivedAt, PickupTime, DropoffTime, Du
 VALUES ('T10101', '2023-01-15 08:15:00', '2023-01-15 08:30:00', '2023-01-15 09:00:00', 30, 18000, 2500);
 
 
--- 3. Driver cancel a trip request
+-- 3. Cancel a trip request by Driver
 INSERT INTO IncompleteTrips (TripID, BookingTime, CancelTime, Reason)
 VALUES ('T10101', '2023-01-15 08:00:00', '2023-01-15 08:10:00', 'Customer No Show');
 
 
--- 4. Counts the number of trips completed by the driver with ID 'G128'
+-- 4. Retrieves the number of trips completed by the driver with ID 'G128'
 SELECT COUNT(*) AS NumberOfTripsCompleted
 FROM CompletedTrips
 JOIN TripRequests ON CompletedTrips.TripID = TripRequests.TripID
 WHERE TripRequests.DID = 'G128';
 
 
--- 5. Calculates the total income for the driver with ID 'G128' from completed trips
+-- 5. Retrieves the total income for the driver with ID 'G128' from completed trips
 SELECT SUM(ActFare + Tip) AS TotalIncome
 FROM CompletedTrips
 JOIN TripRequests ON CompletedTrips.TripID = TripRequests.TripID
@@ -38,12 +38,12 @@ INSERT INTO TripRequests(TripID, CID, DID, TripType, PickupLoc, DropoffLoc, Dist
 VALUES ('T10121', 'G123', 'G128', 'Economy', '123 Start Street', '456 End Street', 10.5, 13000, 'P001');
 
 
--- 7. Customer cancel a trip request
+-- 7. Cancel a trip request by Customer
 INSERT INTO IncompleteTrips (TripID, BookingTime, CancelTime, Reason)
 VALUES ('T10101', '2023-01-15 08:00:00', '2023-01-15 08:10:00', 'Customer No Show');
 
 
--- 8. Calculates the average rating of all trips conducted by the driver of the trip with ID 'T10101'
+-- 8. Retrieves the average rating of all trips conducted by the driver of the trip with ID 'T10101'
 SELECT AVG(DriverRating) AS AverageDriverRating
 FROM Rating
 JOIN CompletedTrips ON Rating.TripID = CompletedTrips.TripID
@@ -79,6 +79,6 @@ JOIN TripRequests ON CompletedTrips.TripID = TripRequests.TripID
 WHERE TripRequests.DID = 'G128';
 
 
--- 13. Calculates the average actual fare for all completed trips, reflecting the average customer spending
+-- 13. Retrieves the average actual fare for all completed trips, reflecting the average customer spending
 SELECT AVG(ActFare) AS AverageCustomerSpending
 FROM CompletedTrips;
