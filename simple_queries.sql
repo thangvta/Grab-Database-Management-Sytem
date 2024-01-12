@@ -1,3 +1,5 @@
+-- DRIVER USER STORIES
+
 -- 1. Retrieves the phone number of the customer for a specific trip with ID 'T10101'
 SELECT GrabUser.Phone
 FROM TripRequests
@@ -29,6 +31,8 @@ JOIN TripRequests ON CompletedTrips.TripID = TripRequests.TripID
 WHERE TripRequests.DID = 'G128';
 
 
+-- CUSTOMER USER STORIES
+
 -- 6. Inserts a new trip request into the database for the customer with ID 'G123'
 INSERT INTO TripRequests(TripID, CID, DID, TripType, PickupLoc, DropoffLoc, Distance, EstFare, PayID)
 VALUES ('T10121', 'G123', 'G128', 'Economy', '123 Start Street', '456 End Street', 10.5, 13000, 'P001');
@@ -58,6 +62,7 @@ SELECT DropoffLoc
 FROM TripRequests
 WHERE CID = 'G123';
 
+-- MANAGERS USER STORIES
 
 -- 11. Retrieves the condition of vehicles used by the driver with ID 'G128'
 SELECT Vehicle.Condition
